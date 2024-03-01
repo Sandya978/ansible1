@@ -1,0 +1,10 @@
+---
+- name: a-1
+  hosts: all
+  become: true
+  tasks:
+    - name: apache_installation
+    ansible.builtin.apt:
+      name: 
+        - apache2
+      state: "present"
