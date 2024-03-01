@@ -3,7 +3,7 @@
   hosts: all
   become: true
   tasks:
-    - name: apache installation
+    - name: apacheinstallation
       ansible.builtin.apt:
         name: 
           - apache2
