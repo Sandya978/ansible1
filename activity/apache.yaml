@@ -8,3 +8,9 @@
         name: 
           - apache2
         state: "present"
+      ansible.builtin.systemd_service:
+        name:
+          - service
+        enabled: "true"
+        state : "started"
+        
