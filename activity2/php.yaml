@@ -1,0 +1,27 @@
+---
+- name: activity1
+  hosts: all
+  become: true
+  tasks:
+    - name: apache installation
+      ansible.builtin.apt:
+        name: 
+          - {{"package"}}
+        state: "present"
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: enable and start apache2
+      ansible.builtin.service:
+        name: apache2
+        enabled: "yes"
+        state: "started"
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: php installation
+      ansible.builtin.apt:
+        name:
+          - {{"php_packages"}}
+        state: "present"
+    - name: enable and restart apache2
+      ansible.builtin.service:
+        name: php
+        state: "restart"
+        
