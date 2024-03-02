@@ -1,7 +1,7 @@
 ---
 - name: activity1
   hosts: all
-  become: true
+  become: "yes"
   tasks:
     - name: apache installation
       ansible.builtin.apt:
