@@ -5,20 +5,18 @@
   tasks:
     - name: apache installation
       ansible.builtin.apt:
-        name: 
-          - "{{package}}"
+        name: "{{package}}"
         state: "present"
       when: ansible_facts['os_family'] == 'Debian'
     - name: enable and start apache2
-      ansible.builtin.service:
+      service:
         name: apache2
         enabled: "yes"
         state: "started"
       when: ansible_facts['os_family'] == 'Debian'
     - name: php installation
       ansible.builtin.apt:
-        name:
-          - "{{php_packages}}"
+        name: "{{php_packages}}"
         state: "present"
     - name: enable and restart apache2
       ansible.builtin.service:
@@ -30,6 +28,6 @@
         dest: /var/www/html/info.php
     - name: restart apache
       service:
-        name: "{{ package }}"
+        name: "{{php_packages}}"
         state: restarted
         
