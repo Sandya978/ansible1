@@ -23,5 +23,13 @@
     - name: enable and restart apache2
       ansible.builtin.service:
         name: php
-        state: "restart"
+        state: "restarted"
+    - name: copy info.php
+      copy:
+        src: info.php
+        dest: /var/www/html/info.php
+    - name: restart apache
+      service:
+        name: "{{ package }}"
+        state: restarted
         
