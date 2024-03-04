@@ -7,6 +7,7 @@
       ansible.builtin.apt:
         name: "{{package}}"
         state: "present"
+        update_cache: "yes"
       when: ansible_facts['os_family'] == 'Debian'
     - name: enable and start apache2
       service:
