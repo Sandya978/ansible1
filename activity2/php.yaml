@@ -10,7 +10,7 @@
       when: ansible_facts['os_family'] == 'Debian'
     - name: enable and start apache2
       service:
-        name: apache2
+        name: "{{package}}"
         enabled: "yes"
         state: "started"
       when: ansible_facts['os_family'] == 'Debian'
@@ -20,7 +20,7 @@
         state: "present"
     - name: enable and restart apache2
       service:
-        name: php
+        name: "{{package}}"
         state: "restarted"
     - name: copy info.php
       copy:
