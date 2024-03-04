@@ -1,6 +1,6 @@
 ---
 - name: activity1
-  hosts: all
+  hosts: webserver
   become: "yes"
   tasks:
     - name: apache installation
