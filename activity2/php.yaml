@@ -19,7 +19,7 @@
         name: "{{php_packages}}"
         state: "present"
     - name: enable and restart apache2
-      ansible.builtin.service:
+      service:
         name: php
         state: "restarted"
     - name: copy info.php
