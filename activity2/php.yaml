@@ -18,10 +18,12 @@
       ansible.builtin.apt:
         name: "{{php_packages}}"
         state: "present"
+      when: ansible_facts['os_family'] == 'Debian'
     - name: enable and restart apache2
       service:
         name: "{{package}}"
         state: "restarted"
+      when: ansible_facts['os_family'] == 'Debian'
     - name: copy info.php
       copy:
         src: info.php
