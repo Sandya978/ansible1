@@ -31,6 +31,6 @@
         dest: /var/www/html/info.php
     - name: restart apache
       service:
-        name: "{{php_packages}}"
+        name: "{{package}}"
         state: restarted
         
