@@ -1,0 +1,88 @@
+---
+- name: nop installation
+  hosts: all
+  become: "yes"
+  tasks: 
+    - name: package installation
+      ansible.builtin.get_url:
+        url: "{{url}}"
+        dest: "packages-microsoft-prod.deb"
+
+    - name: package_dpkg
+      ansible.builtin.dpkg_selections:
+        name: "packages-microsoft-prod.deb"
+        selection: "install" 
+
+    - name: install dotnet
+      ansible.builtin.apt:
+        name: "{{package}}"
+        state: "present"
+        update_cache: "true"
+
+    - name: install nginx
+      ansible.builtin.apt:
+        name: "{{nginx}}"
+        state: "present"
+        update_cache: "true"
+        notify:
+          - start nginx
+
+    - name: start nginx
+      ansible.builtin.service:
+        name: "{{nginx}}"
+        state: "started"
+
+    - name: nginx template
+      ansible.builtin.template:
+        src: \templates\nginx.j2
+        dest: /etc/nginx/sites-available/default
+
+    - name: directory creating
+      ansible.builtin.file:
+        path: /var/www/nopCommerce
+        owner: www-data
+        group: www-data
+        recurse: "true"
+        state: "directory"
+
+    - name: nop package
+      ansible.builtin.unarchive:
+        src: "{{nop_url}}"
+        dest: /var/www/nopCommerce
+
+    - name: creating bin and log directory
+      ansible.builtin.file:
+        path: "/var/www/nopCommerce/{{item}}"
+        state: "directory"
+        loop:
+          - bin
+          - logs
+
+    - name: nop_service
+      ansible.builtin.template:
+      src: \templates\nop.j2
+      dest: /etc/systemd/system/nopCommerce.service
+
+    - name: start nop_service
+      ansible.builtin.service:
+      name: "{{service}}"
+      state: "started"
+      
+    - name: restart nginx
+      ansible.builtin.service:
+      name: "{{nginx}}"
+      state: "restarted"
+      
+
+      
+
+      
+
+
+
+
+         
+      
+
+
+   
