@@ -11,7 +11,7 @@
     - name: creating group
       ansible.builtin.group:
         name: "{{group}}"
-        state: "present""
+        state: "present"
     - name: creating user
       ansible.builtin.user:
         create_home : "yes"
