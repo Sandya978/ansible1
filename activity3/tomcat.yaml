@@ -13,16 +13,17 @@
         name: "{{group}}"
     - name: creating user
       ansible.builtin.user:
-        name: "{{user}}"
-        group: "{{group}}"
         create_home : "true"
+        group: "{{group}}"
         home : "{{home_dir}}"
+        name: "{{user}}"
         shell: "{{shell}}"
         system: "true"
-    #- name: tomcat url
-     # ansible.builtin.get_url:
-      #  url: "{{tomcat_url}}"
-      #  dest: /tmp/apache-tomcat-10.0.10.tar.gz
+        state: "present"
+    # - name: tomcat url
+    #  ansible.builtin.get_url:
+    #    url: "{{tomcat_url}}"
+    #    dest: /tmp/apache-tomcat-10.0.10.tar.gz
     - name: copying url 
       ansible.builtin.unarchive:
         src: "{{tomcat_url}}"
