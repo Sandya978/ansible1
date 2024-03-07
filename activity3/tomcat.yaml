@@ -26,7 +26,7 @@
     #    dest: /tmp/apache-tomcat-10.0.10.tar.gz
     - name: copying url 
       ansible.builtin.unarchive:
-        src: "{{tomcat_url}}"
+        src: /tmp/apache-tomcat-10.0.10.tar.gz
         dest: "{{home_dir}}"
         remote_src : "true"
 
