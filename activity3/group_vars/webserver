@@ -1,8 +1,6 @@
 ---
 #package: update
-java_packages: 
-  - openjdk-11
-  - jdk
+java_packages: openjdk-11-jdk
 user: tomcat
 group: tomcat
 home_dir: /opt/tomcat
