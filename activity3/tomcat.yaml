@@ -18,10 +18,10 @@
         create_home : "true"
         shell: "{{shell}}"
         system: "true"
-    - name: tomcat url
-      ansible.builtin.get_url:
-        url: "{{tomcat_url}}"
-        dest: /tmp/apache-tomcat-10.0.10.tar.gz
+    #- name: tomcat url
+     # ansible.builtin.get_url:
+      #  url: "{{tomcat_url}}"
+      #  dest: /tmp/apache-tomcat-10.0.10.tar.gz
     - name: copying url 
       ansible.builtin.unarchive:
         src: "{{tomcat_url}}"
