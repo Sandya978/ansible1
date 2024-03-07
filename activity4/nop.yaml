@@ -50,11 +50,11 @@
 
     - name: creating bin and log directory
       ansible.builtin.file:
-        path: "/var/www/nopCommerce/{{item}}"
+        path: "/var/www/nopCommerce/{{ item }}"
         state: "directory"
-        loop:
-          - bin
-          - logs
+      loop:
+        - bin
+        - logs
 
     - name: nop_service
       ansible.builtin.template:
