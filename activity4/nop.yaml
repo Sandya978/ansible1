@@ -66,13 +66,12 @@
         name: nopCommerce.service
         state: "started"
       notify: restart nginx
-
+  handlers:
     - name: restart nginx
       ansible.builtin.service: 
         name: "{{nginx}}"
         state: "restarted"
       
-
       
 
       
