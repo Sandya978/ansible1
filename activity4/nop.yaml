@@ -32,8 +32,8 @@
 
     - name: nginx template
       ansible.builtin.template:
-        src: \templates\nginx.j2
-        dest: /etc/nginx/sites-available/default
+        src: "templates/nginx.j2"
+        dest: "/etc/nginx/sites-available/default"
 
     - name: directory creating
       ansible.builtin.file:
