@@ -63,7 +63,7 @@
 
     - name: start nop_service
       ansible.builtin.service:
-        name: "{{service}}"
+        name: "/etc/systemd/system/nopCommerce.service"
         state: "started"
 
     - name: restart nginx
