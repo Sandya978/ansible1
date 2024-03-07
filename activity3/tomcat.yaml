@@ -1,0 +1,30 @@
+---
+- name: tomcat installation
+  hosts: all
+  become: "yes"
+  tasks:
+    - name: java installation
+      ansible.builtin.apt:
+        name: "{{java_packages}}"
+        state: "present"
+        update_cache: "true"
+    - name: creating group
+      ansible.builtin.group:
+        name: "{{group}}"
+    - name: creating user
+      ansible.builtin.user:
+        name: "{{user}}"
+        group: "{{group}}"
+        create_home : "true"
+        shell: "{{shell}}"
+        system: "true"
+    - name: tomcat url
+      ansible.builtin.get_url:
+        name: "{{tomcat_url}}"
+        dest: /tmp/apache-tomcat-10.0.10.tar.gz
+
+      
+
+
+
+        
