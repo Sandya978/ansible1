@@ -60,18 +60,18 @@
 
     - name: nop_service
       ansible.builtin.template:
-      src: \templates\nop.j2
-      dest: /etc/systemd/system/nopCommerce.service
+        src: \templates\nop.j2
+        dest: /etc/systemd/system/nopCommerce.service
 
     - name: start nop_service
       ansible.builtin.service:
-      name: "{{service}}"
-      state: "started"
-      
+        name: "{{service}}"
+        state: "started"
+
     - name: restart nginx
       ansible.builtin.service:
-      name: "{{nginx}}"
-      state: "restarted"
+        name: "{{nginx}}"
+        state: "restarted"
       
 
       
