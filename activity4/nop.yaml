@@ -63,7 +63,7 @@
 
     - name: start nop_service
       ansible.builtin.service:
-        name: nopcommerce.service
+        name: nopCommerce.service
         state: "started"
 
     - name: restart nginx
