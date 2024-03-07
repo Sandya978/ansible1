@@ -20,7 +20,7 @@
         system: "true"
     - name: tomcat url
       ansible.builtin.get_url:
-        name: "{{tomcat_url}}"
+        url: "{{tomcat_url}}"
         dest: /tmp/apache-tomcat-10.0.10.tar.gz
 
       
