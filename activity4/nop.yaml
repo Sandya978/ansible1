@@ -24,9 +24,7 @@
         name: "{{nginx}}"
         state: "present"
         update_cache: "true"
-      notify:
-        - start nginx
-    handlers:
+      
     - name: start nginx
       ansible.builtin.service:
         name: "{{nginx}}"
