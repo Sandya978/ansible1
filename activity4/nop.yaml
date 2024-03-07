@@ -6,7 +6,7 @@
     - name: package installation
       ansible.builtin.get_url:
         url: "{{url}}"
-        dest: "packages-microsoft-prod.deb"
+        dest: "/tmp/packages-microsoft-prod.deb"
 
     - name: package_dpkg
       ansible.builtin.dpkg_selections:
