@@ -26,6 +26,7 @@
       ansible.builtin.unarchive:
         src: "{{tomcat_url}}"
         dest: "{{home_dir}}"
+        remote_src : "true"
 
       
 
